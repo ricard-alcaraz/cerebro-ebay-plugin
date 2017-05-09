@@ -1,0 +1,75 @@
+
+.imagen {
+    margin-top:20px;
+    width:40%;
+    border: 1px solid grey;
+}
+.producto{
+    align-self: flex-start;
+    font-family: "Helvetica neue",Helvetica,Arial,Sans-serif;
+}
+
+.nombre{
+    color:#000000;
+    text-align:center;
+    position:relative;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.producto a{
+    text-decoration: none;
+}
+.precio{
+    margin-top:30px;
+    position:relative;
+    float:right;
+    font-weight: bold;
+    font-size: 2em;
+    padding-right: 10px;
+}
+.venta{
+    position:relative;
+    padding-right: 10px;
+    float:right;
+}
+.boton{
+    margin-top: 20px;
+    width: 128px;
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.04);
+    vertical-align: baseline;
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+   
+   margin-right: 17%;
+    background: linear-gradient(#0079bc, #00509d);
+}
+.boton:hover{
+    background: #00509d;
+}
+.payment{
+    margin-top:20px;
+    
+}
+.pr{
+    float:right;
+    margin-top:20px;
+    display:block;
+    width:55%;
+    background-color:#E2E2E2;
+    height: 170px;
+}
+.details {
+    text-align: center;
+    font-size: 0.8em;
+    color: var(--secondary-font-color);
+}
