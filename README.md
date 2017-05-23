@@ -11,6 +11,9 @@ Writing "price" and a number next to the word searched will filter the results b
 
 ## More functions
 By default it searches on the ebay-US it changes if your idiom matches to an eBay country
+## Related
+    [Cerebro](https://github.com/KELiON/cerebro) – main repo for Cerebro app;
+    [cerebro tools](https://github.com/KELiON/cerebro-tools) – package with tools to simplify package creation;
 
 ## License
-MIT © Ricard Alcaraz Mancebo
+MIT © [Ricard Alcaraz Mancebo](https://github.com/ricard-alcaraz)
