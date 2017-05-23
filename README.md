@@ -10,7 +10,7 @@ Start typing 'eBay' keyword. Cerebro will search on eBay 'Finding API' to show t
 Writing "price" and a number next to the word searched will filter the results being the maximum price the number written 
 
 ## More functions
-By default it searches on the ebay-US it changes if your idiom matches to an eBay country
+By default it searches on the ebay-US it changes if your language matches to an eBay country
 ## Related
 [Cerebro](https://github.com/KELiON/cerebro) – main repo for Cerebro app;
 
