@@ -11,3 +11,6 @@ Writing "price" and a number next to the word searched will filter the results b
 
 ## More functions
 By default it searches on the ebay-US it changes if your idiom matches to an eBay country
+
+## License
+MIT © Ricard Alcaraz Mancebo
