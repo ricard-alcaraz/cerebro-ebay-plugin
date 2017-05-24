@@ -1,7 +1,7 @@
 # cerebro-ebay-plugin
 Cerebro plugin to search on eBay
 ## Plugin usage
-![alt text](https://github.com/ricard-alcaraz/cerebro-ebay-plugin/blob/master/ebay-plugin.gif)
+![alt text](https://github.com/ricard-alcaraz/cerebro-ebay-plugin/blob/master/eBay-plugin-gif.gif)
 ## API
 Start typing 'eBay' keyword. Cerebro will search on eBay 'Finding API' to show the products on the screen
 
