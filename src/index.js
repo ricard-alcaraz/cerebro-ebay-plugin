@@ -89,6 +89,18 @@ const getProductPrice = memoize((q, q2,local) => (
     .then(json => json.findItemsByKeywordsResponse[0].searchResult[0].item)
     .then(json => (json || []).map(removeEmptyKeys))
 ))
+const getProductList = memoize((q, q2,local) => (
+  fetch(`${BASE_URL}?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=${APId}&GLOBAL-ID=EBAY-${local}&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=${q}&paginationInput.entriesPerPage=${q2}&itemFilter(0).paramName=Currency&itemFilter(0).paramValue=USD&sortOrder=BestMatch`)
+    .then(response => response.json())
+    .then(json => json.findItemsByKeywordsResponse[0].searchResult[0].item)
+    .then(json => (json || []).map(removeEmptyKeys))
+))
+const getProductPriceList = memoize((q, q2, q3,local) => (
+  fetch(`${BASE_URL}?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=${APId}&GLOBAL-ID=EBAY-${local}&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=${q}&paginationInput.entriesPerPage=${q3}&itemFilter(0).name=MaxPrice&itemFilter(0).value=${q2}&itemFilter(0).paramName=Currency&itemFilter(0).paramValue=USD&sortOrder=BestMatch`)
+    .then(response => response.json())
+    .then(json => json.findItemsByKeywordsResponse[0].searchResult[0].item)
+    .then(json => (json || []).map(removeEmptyKeys))
+))
 //el contingut del Plugin
 const plugin = (scope) => {
     const match = scope.term.match(/ebay\s(.+)/i);
@@ -117,7 +129,56 @@ const plugin = (scope) => {
   })
     //console.log(match);
     //si conte la paraula price buscara per preu maxim al preu escrit
-     if(match[0].includes("price")){
+    console.log(match[0]);
+
+    if(match[0].includes("list")&& !match[0].includes("price")){
+        const match = scope.term.match(/ebay\s(.+)\slist\s(\d+)/i);
+     const q = match[1];
+     const q2 = match[2];
+     console.log(q2);
+
+     getProductList(q, q2,local).then(items => {
+     if (!items) {
+       return;
+     }
+     const results = items.map(item => ({
+       id: item.itemId,
+       title: item.title,
+       subtitle:`${item.sellingStatus[0].currentPrice[0].__value__}${item.sellingStatus[0].currentPrice[0]["@currencyId"]}`,
+       clipboard:`${item.viewItemURL}`,
+       icon:`${item.galleryURL}`,
+       onSelect: (event) =>  scope.actions.open(`${item.viewItemURL}`),
+       getPreview: () => <Preview name={item.title} imagen={item.galleryURL} precio={item.sellingStatus[0].currentPrice[0].__value__} link={item.viewItemURL} lugar={item.location} precioventa={item.shippingInfo[0].shippingServiceCost[0].__value__} payment={item.paymentMethod} coin={item.sellingStatus[0].currentPrice[0]["@currencyId"]}/>
+     }))
+     scope.display(results)
+     console.log(results);
+   })
+    }
+     else if(match[0].includes("price")){
+       if(match[0].includes("list")){
+           const match = scope.term.match(/ebay\s(.+)\sprice\s(\d+)\slist\s(\d+)/i);
+        const q = match[1];
+        const q2 = match[2];
+        const q3 = match[3];
+        console.log(q+" "+q2+" hola "+q3);
+
+        getProductPriceList(q, q2, q3,local).then(items => {
+        if (!items) {
+          return;
+        }
+        const results = items.map(item => ({
+          id: item.itemId,
+          title: item.title,
+          subtitle:`${item.sellingStatus[0].currentPrice[0].__value__}${item.sellingStatus[0].currentPrice[0]["@currencyId"]}`,
+          clipboard:`${item.viewItemURL}`,
+          icon:`${item.galleryURL}`,
+          onSelect: (event) =>  scope.actions.open(`${item.viewItemURL}`),
+          getPreview: () => <Preview name={item.title} imagen={item.galleryURL} precio={item.sellingStatus[0].currentPrice[0].__value__} link={item.viewItemURL} lugar={item.location} precioventa={item.shippingInfo[0].shippingServiceCost[0].__value__} payment={item.paymentMethod} coin={item.sellingStatus[0].currentPrice[0]["@currencyId"]}/>
+        }))
+        scope.display(results)
+        console.log(results);
+      })
+    } else{
          const match = scope.term.match(/ebay\s(.+)\sprice\s(\d+)/i);
       const q = match[1];
       const q2 = match[2];
@@ -137,6 +198,7 @@ const plugin = (scope) => {
       scope.display(results)
       console.log(results);
     })
+  }
      }
     //si no busca el producte que coincideix millor amb la paraula escrita
     else{
