@@ -1,12 +1,12 @@
 {
-  "name": "cerebro-plugin",
+  "name": "cerebro-ebay",
   "version": "1.0.0",
   "description": "Search on eBay with Cerebro",
   "license": "MIT",
   "repository": "ricard-alcaraz/cerebro-ebay-plugin",
   "author": {
     "name": "Ricard Alcaraz",
-    "email": "ricard.alcaraz1@gmail.com",
+    "email": "ram29f@hotmail.com",
     "url": "ricard-alcaraz.cat"
   },
   "engines": {
