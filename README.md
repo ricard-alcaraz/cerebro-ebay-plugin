@@ -7,8 +7,9 @@ Start typing 'eBay' keyword. Cerebro will search on eBay 'Finding API' to show t
 
 ## Avalaible methods
 ### Price
-Writing "price" and a number next to the word searched will filter the results being the maximum price the number written 
-
+Writing "price" and a number next to the word searched will filter the results being the maximum price the number written
+## List
+Writing "list" and a number next to the word searched it will show only the amount of products written
 ## More functions
 By default it searches on the ebay-US it changes if your language matches to an eBay country
 ## Related
