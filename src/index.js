@@ -225,8 +225,6 @@ const plugin = (scope) => {
 }
 }
 
-//http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=RicardAl-Prueba1-PRD-c69e2c47f-8a8d2215&GLOBAL-ID=EBAY-US&RESPONSE-DATA-FORMAT=JSON&callback=_cb_findItemsByKeywords&REST-PAYLOAD&keywords=harry%20potter&paginationInput.entriesPerPage=10
-
 module.exports = {
   name: 'Search on eBay...',
   keyword: 'ebay',
